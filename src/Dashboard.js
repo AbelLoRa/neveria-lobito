@@ -4,6 +4,7 @@ import Nieve1 from './Nieve1.png';
 import NuevaVentaForm from './NuevaVentaForm';
 
 
+
 function Dashboard({ user, onLogout }) {
   //Opciones para el switch case
   const options = [
@@ -59,44 +60,77 @@ function Dashboard({ user, onLogout }) {
 
       case 'Reportes':
         return (
-          <form>
-            <label>Periodo:<br />
-              <select style={{ width: '100%' }}>
-                <option>Día</option>
-                <option>Semana</option>
-                <option>Mes</option>
-              </select>
-            </label>
-            <button type="submit">Generar</button>
-          </form>
-        );
+          <form onSubmit={(e) => {
+          e.preventDefault(); // evita que la página recargue
+          alert('Reporte generado');
+          }}>
+        <label>
+          Periodo:<br />
+        <select style={{ width: '100%', marginBottom: '10px' }}>
+          <option>Día</option>
+          <option>Semana</option>
+          <option>Mes</option>
+        </select>
+        </label>
+        <button type="submit" style={{ padding: '8px 16px' }}>
+          Generar
+        </button>
+        </form>
+      );
+
       case 'Agregar Producto':
         return (
-          <form>
-            <label>Nombre:<br /><input type="text" style={{ width: '100%' }} /></label>
-            <label>Precio:<br /><input type="number" style={{ width: '100%' }} /></label>
-            <button type="submit">Guardar</button>
+          <form onSubmit={(e) => {
+            e.preventDefault();
+            alert('Producto agregado');
+          }}>
+          <label>Nombre:<br />
+            <input type="text" style={{ width: '100%', marginBottom: '10px' }} />
+          </label>
+          <label>Precio:<br />
+            <input type="number" style={{ width: '100%', marginBottom: '10px' }} />
+          </label>
+          <button type="submit" style={{ padding: '8px 16px' }}>
+           Guardar
+          </button>
           </form>
         );
+
       case 'Dar de Baja Producto':
         return (
-          <form>
-            <label>Selecciona producto:<br />
-              <select style={{ width: '100%' }}>
-                <option>Producto A</option>
-              </select>
-            </label>
-            <button type="submit">Dar de baja</button>
+          <form onSubmit={(e) => {
+            e.preventDefault();
+            alert('Producto dado de baja');
+          }}>
+          <label>Selecciona producto:<br />
+            <select style={{ width: '100%', marginBottom: '10px' }}>
+              <option>Producto A</option>
+            </select>
+          </label>
+          <button type="submit" style={{ padding: '8px 16px' }}>
+            Dar de baja
+          </button>
           </form>
         );
+
       case 'Reabastecer Insumos':
         return (
-          <form>
-            <label>Producto:<br /><input type="text" style={{ width: '100%' }} /></label>
-            <label>Cantidad:<br /><input type="number" style={{ width: '100%' }} /></label>
-            <button type="submit">Reabastecer</button>
-          </form>
+          <form onSubmit={(e) => {
+            e.preventDefault();
+            alert('Insumos reabastecidos');
+          }}>
+          <label>Producto:<br />
+            <input type="text" style={{ width: '100%', marginBottom: '10px' }} />
+          </label>
+          <label>Cantidad:<br />
+            <input type="number" style={{ width: '100%', marginBottom: '10px' }} />
+          </label>
+          <button type="submit" style={{ padding: '8px 16px' }}>
+            Reabastecer
+          </button>
+        </form>
         );
+
       default:
         return null;
     }

@@ -2,6 +2,9 @@
   "name": "neveria-app",
   "version": "0.1.0",
   "private": true,
+  "main": "main.js",
+  "homepage": ".",
+
   "dependencies": {
     "@testing-library/dom": "^10.4.0",
     "@testing-library/jest-dom": "^6.6.3",
@@ -12,18 +15,44 @@
     "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4"
   },
+
+  "devDependencies": {
+    "electron": "^36.4.0",
+    "electron-builder": "^23.6.0"
+  },
+
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "electron": "electron .",
+    "dist": "npm run build && electron-builder"
   },
+
+  "build": {
+    "appId": "com.tuempresa.neveriaapp",
+    "productName": "Neveria App",
+    "asar": true,
+    "files": [
+      "build/**/*",
+      "main.js",
+      "package.json"
+    ],
+    "directories": {
+      "buildResources": "public"
+    },
+    "win": {
+      "target": "nsis",
+      "icon": "public/ico.ico"
+    }
+  },
+
   "eslintConfig": {
     "extends": [
       "react-app",
       "react-app/jest"
     ]
   },
+
   "browserslist": {
     "production": [
       ">0.2%",

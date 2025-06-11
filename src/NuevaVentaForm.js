@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 
 function NuevaVentaForm({ productos }) {
+  // Estados para 'Nueva Venta'
   const [productoSeleccionado, setProductoSeleccionado] = useState(productos[0].nombre);
   const [cantidad, setCantidad] = useState(1);
 
